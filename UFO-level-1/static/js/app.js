@@ -1,6 +1,6 @@
 // Get a reference to the table body
 var tbody = d3.select("tbody");
-
+var text = d3.select("#text");
 // Console.log the weather data from data.js
 console.log(data);
 
@@ -12,47 +12,39 @@ data.forEach((weatherReport) => {
     });
   });
 
-  //Button function to filter search
-  d3.selectAll("button").on("click", function handleChange() {
-    // var inputText = d3.select("#text");
-    var text = d3.select("#text");
-    var userInput = d3.event.target.value.select("#text");
+    // Assign the data from `data.js` to a descriptive variable
+var filterDate = data;
 
-  // var filterDate = userInput;
-      console.log(userInput)
-  //  output.text(filterDate);
-      text.on("change", handleChange);
-    
-  });
+// Select the button
+var button = d3.select("#button");
+
+// Select the form
+var form = d3.select("#form");
+
+// Create event handlers 
+button.on("click", runEnter);
+form.on("submit",runEnter);
+
+// Complete the event handler function for the form
+function runEnter() {
+
+  // Prevent the page from refreshing
+  d3.event.preventDefault();
+  
+  // Select the input element and get the raw HTML node
+  var inputElement = d3.select("#datetime");
+
+  // Get the value property of the input element
+  var inputValue = inputElement.property("value");
+
+  console.log(inputValue);
+  console.log(filterDate);
+
+  var filteredData = filterDate.filter(dateInput => dateInput.datetime === inputValue);
+
+  console.log(filteredData);}
+
+
+
  
 
-// Function to handle input change
-
-
-
-
-
-
-
-
-
-
-// function myFunction() {
-//   // Declare variables
-//   var input, filter, ul, li, a, i, txtValue;
-//   input = document.getElementById('myInput');
-//   filter = input.value
-//   ul = document.getElementById("list-group");
-//   li = ul.getElementsByTagName('li');
-
-//   // Loop through all list items, and hide those who don't match the search query
-//   for (i = 0; i < li.length; i++) {
-//     a = li[i].getElementsByTagName("a")[0];
-//     txtValue = a.textContent || a.innerText;
-//     if (txtValue.indexOf(filter) > -1) {
-//       li[i].style.display = "";
-//     } else {
-//       li[i].style.display = "none";
-//     }
-//   }
-// }
