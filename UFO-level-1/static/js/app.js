@@ -2,7 +2,7 @@
 var tbody = d3.select("tbody");
 var text = d3.select("#text");
 // Console.log the weather data from data.js
-console.log(data);
+// console.log(data);
 
 data.forEach((weatherReport) => {
     var row = tbody.append("tr");
@@ -37,14 +37,26 @@ function runEnter() {
   // Get the value property of the input element
   var inputValue = inputElement.property("value");
 
-  console.log(inputValue);
-  console.log(filterDate);
-
   var filteredData = filterDate.filter(dateInput => dateInput.datetime === inputValue);
 
-  console.log(filteredData);}
+  // remove the contents and update with user input date and data
+  
 
+  filteredData.forEach((filterweather) => {
+    var row = tbody.append("tr");
+    Object.entries(filterweather).forEach(([key, value]) => {
+      var cell = row.append("td");
+      cell.text(value);
+    });
+  });
+  // //Recreate the table with the filtered data
+  // var newRow = d3.select("table").append("tbody")
 
-
- 
-
+  // filteredData.forEach((weatherReport) => {
+  //   var nrow = tbody.append("tr");
+  //   Object.entries(weatherReport).forEach(([key, value]) => {
+  //     var ncell = nrow.append("td");
+  //     ncell.text(value);
+  //   });
+  // });
+};
