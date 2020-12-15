@@ -46,7 +46,7 @@ function runEnter() {
   newRows.html("")
   filteredData.forEach((filterweather) => {
     var newRowstext = newRows.append("tr");
-    Object.entries(filterweather).forEach(([key, value]) => {
+    Object.entries(filterweather).forEach(([key, value]) =>{
       var cell = newRowstext.append("td");
       cell.text(value);
     });
