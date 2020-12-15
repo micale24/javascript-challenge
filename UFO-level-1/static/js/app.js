@@ -40,23 +40,14 @@ function runEnter() {
   var filteredData = filterDate.filter(dateInput => dateInput.datetime === inputValue);
 
   // remove the contents and update with user input date and data
-  
-
+  var newRows = d3.select("tbody");
+  var newRowstext = d3.select("#text");
+  newRows.html("")
   filteredData.forEach((filterweather) => {
-    var row = tbody.append("tr");
+    var newRowstext = newRows.append("tr");
     Object.entries(filterweather).forEach(([key, value]) => {
-      var cell = row.append("td");
+      var cell = newRowstext.append("td");
       cell.text(value);
     });
   });
-  // //Recreate the table with the filtered data
-  // var newRow = d3.select("table").append("tbody")
-
-  // filteredData.forEach((weatherReport) => {
-  //   var nrow = tbody.append("tr");
-  //   Object.entries(weatherReport).forEach(([key, value]) => {
-  //     var ncell = nrow.append("td");
-  //     ncell.text(value);
-  //   });
-  // });
 };
